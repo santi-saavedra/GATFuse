@@ -1,0 +1,12 @@
+# Byte-identical checkouts regardless of a contributor's core.autocrlf setting.
+# This repository is archived and cited, so what a reader clones has to match
+# what was committed — otherwise checksums over the working tree disagree with
+# the published artefact. (mitelman_fusions.tsv arrives with CRLF from its
+# upstream source; it is stored and checked out as LF.)
+* text=auto eol=lf
+
+# Binary payloads: never normalised, never diffed as text.
+*.pt  binary
+*.bam binary
+*.bai binary
+*.gz  binary
