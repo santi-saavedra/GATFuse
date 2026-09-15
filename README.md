@@ -67,7 +67,7 @@ installed automatically.
 ## Installation
 
 ```bash
-git clone https://medal.ctb.upm.es/internal/gitlab/Saavedra/gatfuse.git
+git clone https://medal.ctb.upm.es/internal/gitlab/saavedra/gatfuse.git
 cd gatfuse
 pip install .
 gatfuse --version

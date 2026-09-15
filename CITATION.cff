@@ -16,7 +16,7 @@ authors:
     given-names: Paloma
     affiliation: Universidad Politécnica de Madrid
 license: Apache-2.0
-repository-code: https://medal.ctb.upm.es/internal/gitlab/Saavedra/gatfuse
+repository-code: https://medal.ctb.upm.es/internal/gitlab/saavedra/gatfuse
 version: 1.0.0
 preferred-citation:
   type: article
