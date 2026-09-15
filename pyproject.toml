@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gatfuse"
+version = "1.0.0"
+description = "Gene fusion detection from RNA-seq alignments using graph attention networks"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Martín Saavedra Rojas", email = "martin.saavedra@alumnos.upm.es" },
+    { name = "Emilio Serrano" },
+    { name = "Alejandro Rodríguez-González" },
+    { name = "Paloma Tejera-Nevado", email = "paloma.tejera@upm.es" },
+]
+keywords = ["bioinformatics", "gene-fusion", "RNA-seq", "graph-neural-network", "cancer-genomics"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+# Version floors are the oldest releases GATFuse is known to work with; no
+# upper pins, so the tool composes with the rest of a user's environment.
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "pysam>=0.21",
+    "torch>=2.0",
+    "torch-geometric>=2.4",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+dev = ["pytest>=7.0", "ruff>=0.4"]
+
+[project.scripts]
+gatfuse = "gatfuse.cli:main"
+
+[project.urls]
+Homepage = "https://medal.ctb.upm.es/internal/gitlab/Saavedra/gatfuse"
+Source = "https://medal.ctb.upm.es/internal/gitlab/Saavedra/gatfuse"
+Issues = "https://medal.ctb.upm.es/internal/gitlab/Saavedra/gatfuse/-/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"gatfuse.resources.models" = ["*.pt"]
+"gatfuse.resources.known_fusions" = ["*.tsv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+filterwarnings = ["ignore::FutureWarning:torch.jit._script"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["B008"]

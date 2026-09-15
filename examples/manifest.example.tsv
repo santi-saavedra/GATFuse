@@ -1,0 +1,4 @@
+sample_id	bam	chimeric_junctions	gene_counts	fusions
+K562	alignments/K562/Aligned.sortedByCoord.out.bam	alignments/K562/Chimeric.out.junction	alignments/K562/ReadsPerGene.out.tab	BCR:ABL1
+MCF-7	alignments/MCF-7/Aligned.sortedByCoord.out.bam	alignments/MCF-7/Chimeric.out.junction	alignments/MCF-7/ReadsPerGene.out.tab	BCAS4:BCAS3;ARFGEF2:SULF2;RPS6KB1:VMP1
+VCaP	alignments/VCaP/Aligned.sortedByCoord.out.bam	alignments/VCaP/Chimeric.out.junction	alignments/VCaP/ReadsPerGene.out.tab	TMPRSS2:ERG@chr21:42870046-chr21:39956869

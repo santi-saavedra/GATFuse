@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+.venv/
+venv/
+
+# Testing and tooling
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# GATFuse outputs
+*.tsv.gz
+gatfuse_fusions.tsv
+gatfuse-model.pt
+cache/
+!examples/*.tsv
+!src/gatfuse/resources/known_fusions/*.tsv
+
+# Reference data is user-supplied and large; never commit it
+*.gtf
+*.gtf.gz
+*.fa
+*.fa.gz
+*.bam
+*.bai
+*.fastq
+*.fastq.gz
+!tests/data/*.gtf
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/

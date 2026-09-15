@@ -1,0 +1,23 @@
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read0	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read1	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read2	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read3	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read4	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read5	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read6	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read7	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read8	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read9	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read10	2950	50M50S	2000	50S50M
+chr1	3000	+	chr2	2000	+	1	0	0	bcr_abl_read11	2950	50M50S	2000	50S50M
+chr1	22000	+	chr2	32000	+	1	0	0	ewsr1_fli1_read0	21950	50M50S	32000	50S50M
+chr1	22000	+	chr2	32000	+	1	0	0	ewsr1_fli1_read1	21950	50M50S	32000	50S50M
+chr1	22000	+	chr2	32000	+	1	0	0	ewsr1_fli1_read2	21950	50M50S	32000	50S50M
+chr1	22000	+	chr2	32000	+	1	0	0	ewsr1_fli1_read3	21950	50M50S	32000	50S50M
+chr1	22000	+	chr2	32000	+	1	0	0	ewsr1_fli1_read4	21950	50M50S	32000	50S50M
+chr1	3500	+	chr1	22500	+	0	0	0	readthrough_read0	3450	50M50S	22500	50S50M
+chr1	3500	+	chr1	22500	+	0	0	0	readthrough_read1	3450	50M50S	22500	50S50M
+chr1	3500	+	chr1	22500	+	0	0	0	readthrough_read2	3450	50M50S	22500	50S50M
+chr2	5000	+	chr2	5200	+	0	0	0	intragenic_read0	4950	50M50S	5200	50S50M
+chr2	5000	+	chr2	5200	+	0	0	0	intragenic_read1	4950	50M50S	5200	50S50M
+# Nreads 100000

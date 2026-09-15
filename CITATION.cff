@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: GATFuse
+message: If you use GATFuse in your research, please cite the article below.
+type: software
+authors:
+  - family-names: Saavedra Rojas
+    given-names: Martín
+    affiliation: Universidad Politécnica de Madrid
+  - family-names: Serrano
+    given-names: Emilio
+    affiliation: Universidad Politécnica de Madrid
+  - family-names: Rodríguez-González
+    given-names: Alejandro
+    affiliation: Universidad Politécnica de Madrid
+  - family-names: Tejera-Nevado
+    given-names: Paloma
+    affiliation: Universidad Politécnica de Madrid
+license: Apache-2.0
+repository-code: https://medal.ctb.upm.es/internal/gitlab/Saavedra/gatfuse
+version: 1.0.0
+preferred-citation:
+  type: article
+  title: Gene Fusion Detection in RNA-seq Data Using Graph Attention Networks
+  authors:
+    - family-names: Saavedra Rojas
+      given-names: Martín
+    - family-names: Serrano
+      given-names: Emilio
+    - family-names: Rodríguez-González
+      given-names: Alejandro
+    - family-names: Tejera-Nevado
+      given-names: Paloma

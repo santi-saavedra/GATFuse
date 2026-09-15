@@ -1,0 +1,21 @@
+#!genome-build GATFuse-test-v1
+chr1	test	gene	1000	5000	.	+	.	gene_id "ENSG00000186716"; gene_name "BCR"; gene_biotype "protein_coding";
+chr1	test	exon	1000	1666	.	+	.	gene_id "ENSG00000186716"; gene_name "BCR"; gene_biotype "protein_coding"; transcript_id "ENSG00000186716T1"; exon_number 1;
+chr1	test	exon	2333	2999	.	+	.	gene_id "ENSG00000186716"; gene_name "BCR"; gene_biotype "protein_coding"; transcript_id "ENSG00000186716T1"; exon_number 2;
+chr1	test	exon	3666	4332	.	+	.	gene_id "ENSG00000186716"; gene_name "BCR"; gene_biotype "protein_coding"; transcript_id "ENSG00000186716T1"; exon_number 3;
+chr1	test	gene	20000	25000	.	+	.	gene_id "ENSG00000182944"; gene_name "EWSR1"; gene_biotype "protein_coding";
+chr1	test	exon	20000	20833	.	+	.	gene_id "ENSG00000182944"; gene_name "EWSR1"; gene_biotype "protein_coding"; transcript_id "ENSG00000182944T1"; exon_number 1;
+chr1	test	exon	21666	22499	.	+	.	gene_id "ENSG00000182944"; gene_name "EWSR1"; gene_biotype "protein_coding"; transcript_id "ENSG00000182944T1"; exon_number 2;
+chr1	test	exon	23332	24165	.	+	.	gene_id "ENSG00000182944"; gene_name "EWSR1"; gene_biotype "protein_coding"; transcript_id "ENSG00000182944T1"; exon_number 3;
+chr2	test	gene	1000	6000	.	+	.	gene_id "ENSG00000097007"; gene_name "ABL1"; gene_biotype "protein_coding";
+chr2	test	exon	1000	1833	.	+	.	gene_id "ENSG00000097007"; gene_name "ABL1"; gene_biotype "protein_coding"; transcript_id "ENSG00000097007T1"; exon_number 1;
+chr2	test	exon	2666	3499	.	+	.	gene_id "ENSG00000097007"; gene_name "ABL1"; gene_biotype "protein_coding"; transcript_id "ENSG00000097007T1"; exon_number 2;
+chr2	test	exon	4332	5165	.	+	.	gene_id "ENSG00000097007"; gene_name "ABL1"; gene_biotype "protein_coding"; transcript_id "ENSG00000097007T1"; exon_number 3;
+chr2	test	gene	30000	35000	.	+	.	gene_id "ENSG00000151702"; gene_name "FLI1"; gene_biotype "protein_coding";
+chr2	test	exon	30000	30833	.	+	.	gene_id "ENSG00000151702"; gene_name "FLI1"; gene_biotype "protein_coding"; transcript_id "ENSG00000151702T1"; exon_number 1;
+chr2	test	exon	31666	32499	.	+	.	gene_id "ENSG00000151702"; gene_name "FLI1"; gene_biotype "protein_coding"; transcript_id "ENSG00000151702T1"; exon_number 2;
+chr2	test	exon	33332	34165	.	+	.	gene_id "ENSG00000151702"; gene_name "FLI1"; gene_biotype "protein_coding"; transcript_id "ENSG00000151702T1"; exon_number 3;
+chr2	test	gene	40000	41000	.	-	.	gene_id "ENSG00000999999"; gene_name "TESTLNC"; gene_biotype "lncRNA";
+chr2	test	exon	40000	40166	.	-	.	gene_id "ENSG00000999999"; gene_name "TESTLNC"; gene_biotype "lncRNA"; transcript_id "ENSG00000999999T1"; exon_number 1;
+chr2	test	exon	40333	40499	.	-	.	gene_id "ENSG00000999999"; gene_name "TESTLNC"; gene_biotype "lncRNA"; transcript_id "ENSG00000999999T1"; exon_number 2;
+chr2	test	exon	40666	40832	.	-	.	gene_id "ENSG00000999999"; gene_name "TESTLNC"; gene_biotype "lncRNA"; transcript_id "ENSG00000999999T1"; exon_number 3;
