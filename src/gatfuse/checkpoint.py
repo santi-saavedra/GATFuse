@@ -1,5 +1,6 @@
 """Reading and writing model checkpoints."""
 
+import pickle
 from dataclasses import dataclass, field
 
 import torch
@@ -80,7 +81,17 @@ def load(path, map_location="cpu"):
     """Load a checkpoint and instantiate its model."""
     resolved = require_file(path, "model checkpoint")
     try:
-        raw = torch.load(resolved, map_location=map_location, weights_only=False)
+        # weights_only=True reads tensors and primitives without executing the
+        # pickle stream. Checkpoints are shared between labs, so a model file
+        # must never be able to run code just by being loaded.
+        raw = torch.load(resolved, map_location=map_location, weights_only=True)
+    except pickle.UnpicklingError as exc:
+        raise ModelError(
+            f"Checkpoint {resolved} holds objects that are not tensors, numbers or "
+            f"strings, and GATFuse refuses to unpickle it: {exc}\n"
+            "Checkpoints written by 'gatfuse train' contain only such values. "
+            "If this file came from elsewhere, treat it as untrusted."
+        ) from exc
     except Exception as exc:
         raise ModelError(f"Could not read checkpoint {resolved}: {exc}") from exc
 
