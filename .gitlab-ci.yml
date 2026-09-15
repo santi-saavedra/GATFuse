@@ -1,0 +1,70 @@
+# GATFuse CI.
+#
+# Needs a runner with the docker executor and outbound access to pypi.org and
+# download.pytorch.org. If the CTB runners are tagged, add the tag under
+# `default.tags`; if they are offline, point PIP_INDEX_URL at the local mirror.
+#
+# Making `test` a required check: Settings -> Merge requests -> "Pipelines must
+# succeed", together with the protected-branch rules on main.
+
+default:
+  image: python:3.11
+  interruptible: true
+
+stages:
+  - lint
+  - test
+  - build
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+cache:
+  key:
+    files:
+      - pyproject.toml
+  paths:
+    - .pip-cache
+
+lint:
+  stage: lint
+  script:
+    - pip install "ruff>=0.4"
+    - ruff check src tests scripts
+
+test:
+  stage: test
+  # The versions pyproject.toml claims to support. Trim this list if the
+  # runner is short on disk: each job pulls its own ~200 MB torch wheel.
+  parallel:
+    matrix:
+      - PYTHON_VERSION: ["3.10", "3.11", "3.12"]
+  image: python:$PYTHON_VERSION
+  script:
+    # CPU-only wheel first, so the dependency resolver does not pull the
+    # multi-gigabyte CUDA build to satisfy torch>=2.0.
+    - pip install torch --index-url https://download.pytorch.org/whl/cpu
+    - pip install -e ".[test]"
+    - pytest -q --junitxml=report.xml
+  artifacts:
+    when: always
+    reports:
+      junit: report.xml
+    expire_in: 1 week
+
+# Builds the sdist and wheel for a tagged release and keeps them as artifacts,
+# so the archive uploaded alongside the paper is the one CI produced.
+package:
+  stage: build
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - pip install build twine
+    - python -m build
+    - twine check dist/*
+    - sha256sum dist/* src/gatfuse/resources/models/*.pt | tee dist/SHA256SUMS
+  artifacts:
+    paths:
+      - dist/
+    expire_in: never
