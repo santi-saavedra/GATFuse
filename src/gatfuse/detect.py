@@ -127,8 +127,9 @@ def build_candidate_table(graph, scores, annotation):
     def label(node):
         gene = node_to_gene.get(int(node))
         symbol = names.get(gene)
-        if symbol and not pd.isna(symbol):
-            return symbol
+        # pd.isna first: gene_name is a nullable column, and bool(pd.NA) raises.
+        if not pd.isna(symbol) and symbol:
+            return str(symbol)
         return gene if gene is not None else str(int(node))
 
     breakpoints = graph.edge_breakpoints

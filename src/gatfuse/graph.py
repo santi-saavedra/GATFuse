@@ -17,6 +17,21 @@ log = get_logger("graph")
 # --- Feature helpers ---
 
 
+def _str_map(frame, key_column, value_column):
+    """``{key: value}`` over a gene table, with pandas NA flattened to None.
+
+    The annotation columns are nullable strings, so a missing value is
+    ``pd.NA``. That is neither falsy nor unequal to anything: ``pd.NA == "x"``
+    is ``pd.NA`` again, and evaluating it as a boolean raises. Mapping it to
+    None lets the ordinary comparisons downstream work.
+    """
+    pairs = frame.drop_duplicates(key_column)[[key_column, value_column]]
+    return {
+        key: (None if pd.isna(value) else str(value))
+        for key, value in pairs.itertuples(index=False, name=None)
+    }
+
+
 def _symbol(gene_names, gene_id):
     """Gene symbol as a plain string.
 
@@ -196,13 +211,9 @@ def build_graph(counts, junctions, discordant_pairs, annotation,
     log_tpm = (log_tpm - log_tpm.mean()) / (log_tpm.std() + 1e-6)
     log_length = (log_length - log_length.mean()) / (log_length.std() + 1e-6)
 
-    biotypes = (
-        genes[["gene_id", "gene_biotype"]]
-        .drop_duplicates("gene_id")
-        .set_index("gene_id")["gene_biotype"]
-    )
+    biotypes = _str_map(genes, "gene_id", "gene_biotype")
     is_protein_coding = np.array(
-        [1.0 if biotypes.get(gene, "") == "protein_coding" else 0.0 for gene in unique_genes],
+        [1.0 if biotypes.get(gene) == "protein_coding" else 0.0 for gene in unique_genes],
         dtype=np.float32,
     )
 
@@ -238,12 +249,8 @@ def build_graph(counts, junctions, discordant_pairs, annotation,
             ["gene_id", "start", "end"]
         ].itertuples(index=False, name=None)
     }
-    gene_chrom = dict(
-        genes.drop_duplicates("gene_id")[["gene_id", "chr"]].itertuples(index=False, name=None)
-    )
-    gene_strand = dict(
-        genes.drop_duplicates("gene_id")[["gene_id", "strand"]].itertuples(index=False, name=None)
-    )
+    gene_chrom = _str_map(genes, "gene_id", "chr")
+    gene_strand = _str_map(genes, "gene_id", "strand")
     tpm_by_gene = dict(
         expression[["gene_id", "tpm"]].itertuples(index=False, name=None)
     )

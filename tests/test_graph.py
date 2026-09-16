@@ -114,13 +114,15 @@ def test_node_features_are_standardised(sample_graph):
     assert float(tpm.std()) == pytest.approx(1.0, abs=1e-3)
 
 
-def test_genes_without_a_symbol_do_not_break_known_fusion_features(
+def test_genes_with_missing_annotation_fields_do_not_break_the_build(
     annotation, chimeric_path, counts_path, bam_path, known_fusions
 ):
-    """A GTF leaves gene_name empty for many genes, and the column is nullable.
+    """Real GTFs leave gene_name and gene_biotype empty for plenty of genes.
 
-    The missing value is pd.NA, which raises instead of being falsy, so every
-    run against a real annotation used to die once the catalogue was enabled.
+    Those columns are nullable, so the missing value is pd.NA: it is not falsy,
+    and ``pd.NA == "protein_coding"`` is pd.NA rather than False. Evaluating
+    either as a boolean raises, which killed every run against a real
+    annotation. The synthetic fixture fills every field, so nothing caught it.
     """
     import pandas as pd
 
@@ -128,6 +130,8 @@ def test_genes_without_a_symbol_do_not_break_known_fusion_features(
 
     genes = annotation.genes.copy()
     genes.loc[genes.index[0], "gene_name"] = pd.NA
+    genes.loc[genes.index[0], "gene_biotype"] = pd.NA
+    genes.loc[genes.index[-1], "gene_biotype"] = pd.NA
     patched = Annotation(genes=genes, exons=annotation.exons, source=annotation.source)
 
     params = GraphParams(min_split_reads=2, use_known_fusions=True)
