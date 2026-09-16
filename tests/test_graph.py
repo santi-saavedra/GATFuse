@@ -112,3 +112,33 @@ def test_node_features_are_standardised(sample_graph):
     tpm = sample_graph.x[:, 0].numpy()
     assert abs(float(tpm.mean())) < 1e-5
     assert float(tpm.std()) == pytest.approx(1.0, abs=1e-3)
+
+
+def test_genes_without_a_symbol_do_not_break_known_fusion_features(
+    annotation, chimeric_path, counts_path, bam_path, known_fusions
+):
+    """A GTF leaves gene_name empty for many genes, and the column is nullable.
+
+    The missing value is pd.NA, which raises instead of being falsy, so every
+    run against a real annotation used to die once the catalogue was enabled.
+    """
+    import pandas as pd
+
+    from gatfuse.io.annotation import Annotation
+
+    genes = annotation.genes.copy()
+    genes.loc[genes.index[0], "gene_name"] = pd.NA
+    patched = Annotation(genes=genes, exons=annotation.exons, source=annotation.source)
+
+    params = GraphParams(min_split_reads=2, use_known_fusions=True)
+    graph = build_graph(
+        load_expression(counts_path),
+        load_chimeric_junctions(chimeric_path, min_split_reads=2),
+        load_discordant_pairs(bam_path),
+        patched,
+        params=params,
+        known_fusions=known_fusions,
+    )
+    # 3 base node features plus the two contributed by the catalogue.
+    assert graph.x.shape == (5, 5)
+    assert graph.edge_attr.shape[1] == num_edge_features(True)

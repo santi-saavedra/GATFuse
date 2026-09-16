@@ -17,6 +17,18 @@ log = get_logger("graph")
 # --- Feature helpers ---
 
 
+def _symbol(gene_names, gene_id):
+    """Gene symbol as a plain string.
+
+    A GTF leaves ``gene_name`` out for plenty of genes, and the column is a
+    nullable string, so the missing value is ``pd.NA`` — which raises rather
+    than being falsy. Those genes simply have no symbol to match against the
+    known-fusion catalogue.
+    """
+    name = gene_names.get(gene_id)
+    return "" if pd.isna(name) else str(name)
+
+
 def _relative_position(gene_bounds, gene_id, position):
     """Where the breakpoint falls within the gene body, on a 0-1 scale."""
     bounds = gene_bounds.get(gene_id)
@@ -202,7 +214,7 @@ def build_graph(counts, junctions, discordant_pairs, annotation,
 
     node_columns = [log_tpm, log_length, is_protein_coding]
     if use_known_fusions:
-        symbols = [gene_names.get(gene, "") or "" for gene in unique_genes]
+        symbols = [_symbol(gene_names, gene) for gene in unique_genes]
         node_columns.append(
             np.array([1.0 if known_fusions.is_fusion_gene(s) else 0.0 for s in symbols],
                      dtype=np.float32)
@@ -399,7 +411,7 @@ def build_graph(counts, junctions, discordant_pairs, annotation,
                 if use_known_fusions:
                     recurrence = float(
                         known_fusions.pair_count(
-                            gene_names.get(donor, "") or "", gene_names.get(acceptor, "") or ""
+                            _symbol(gene_names, donor), _symbol(gene_names, acceptor)
                         )
                     )
                     values = np.concatenate(
