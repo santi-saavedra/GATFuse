@@ -45,7 +45,8 @@ The suite runs in a few seconds against a miniature synthetic sample in
 ## Conda
 
 `environment.yml` also brings in STAR and samtools, giving a complete pipeline
-environment:
+environment. Run it from the clone, since the file is not part of the installed
+package:
 
 ```bash
 conda env create -f environment.yml
@@ -54,6 +55,8 @@ pip install --no-deps -e .
 ```
 
 ## Docker
+
+Also built from the clone: the image copies the source tree in.
 
 ```bash
 docker build -t gatfuse:1.0.0 .

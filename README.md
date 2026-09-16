@@ -66,9 +66,17 @@ installed automatically.
 
 ## Installation
 
+Every route starts from a clone: the conda environment file and the Dockerfile
+are part of the repository, not of the installed package.
+
 ```bash
 git clone https://medal.ctb.upm.es/internal/gitlab/saavedra/gatfuse.git
 cd gatfuse
+```
+
+Then pip:
+
+```bash
 pip install .
 gatfuse --version
 ```
