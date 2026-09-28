@@ -70,8 +70,8 @@ Every route starts from a clone: the conda environment file and the Dockerfile
 are part of the repository, not of the installed package.
 
 ```bash
-git clone https://medal.ctb.upm.es/internal/gitlab/saavedra/gatfuse.git
-cd gatfuse
+git clone https://github.com/santi-saavedra/GATFuse.git
+cd GATFuse
 ```
 
 Then pip:

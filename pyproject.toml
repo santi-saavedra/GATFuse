@@ -47,9 +47,9 @@ dev = ["pytest>=7.0", "ruff>=0.4"]
 gatfuse = "gatfuse.cli:main"
 
 [project.urls]
-Homepage = "https://medal.ctb.upm.es/internal/gitlab/saavedra/gatfuse"
-Source = "https://medal.ctb.upm.es/internal/gitlab/saavedra/gatfuse"
-Issues = "https://medal.ctb.upm.es/internal/gitlab/saavedra/gatfuse/-/issues"
+Homepage = "https://github.com/santi-saavedra/GATFuse"
+Source = "https://github.com/santi-saavedra/GATFuse"
+Issues = "https://github.com/santi-saavedra/GATFuse/issues"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

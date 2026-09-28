@@ -1,0 +1,33 @@
+{
+  "upload_type": "software",
+  "title": "GATFuse: gene fusion detection from RNA-seq using graph attention networks",
+  "description": "<p>GATFuse reformulates gene fusion detection as an edge-classification problem on graphs. Each RNA-seq sample is represented as a graph whose nodes are expressed genes and whose edges are the chimeric junctions reported by STAR; a Graph Attention Network (GATv2) conditioned on junction-level features scores each candidate and reports a calibrated probability. The release includes graph construction from STAR output, training, inference, post-processing, and a model pretrained on 101 RNA-seq samples with literature-confirmed fusions.</p>",
+  "creators": [
+    {
+      "name": "Saavedra Rojas, Martín",
+      "affiliation": "Universidad Politécnica de Madrid"
+    },
+    {
+      "name": "Serrano, Emilio",
+      "affiliation": "Universidad Politécnica de Madrid"
+    },
+    {
+      "name": "Rodríguez-González, Alejandro",
+      "affiliation": "Universidad Politécnica de Madrid"
+    },
+    {
+      "name": "Tejera-Nevado, Paloma",
+      "affiliation": "Universidad Politécnica de Madrid"
+    }
+  ],
+  "license": "Apache-2.0",
+  "access_right": "open",
+  "keywords": [
+    "bioinformatics",
+    "gene fusion",
+    "RNA-seq",
+    "graph neural networks",
+    "graph attention networks",
+    "cancer genomics"
+  ]
+}

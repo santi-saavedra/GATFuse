@@ -26,8 +26,8 @@ environment instead of pinning it.
 ## From source (recommended)
 
 ```bash
-git clone https://medal.ctb.upm.es/internal/gitlab/saavedra/gatfuse.git
-cd gatfuse
+git clone https://github.com/santi-saavedra/GATFuse.git
+cd GATFuse
 pip install .
 gatfuse --version
 ```
