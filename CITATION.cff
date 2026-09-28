@@ -18,6 +18,8 @@ authors:
 license: Apache-2.0
 repository-code: https://github.com/santi-saavedra/GATFuse
 version: 1.0.0
+doi: 10.5281/zenodo.23016797
+date-released: 2026-09-28
 preferred-citation:
   type: article
   title: Gene Fusion Detection in RNA-seq Data Using Graph Attention Networks

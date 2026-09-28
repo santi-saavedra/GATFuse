@@ -1,5 +1,7 @@
 # GATFuse
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23016797.svg)](https://doi.org/10.5281/zenodo.23016797)
+
 **Gene fusion detection from RNA-seq data using graph attention networks.**
 
 GATFuse reformulates fusion detection as an *edge-classification* problem. Each
@@ -251,6 +253,11 @@ Full discussion: [docs/limitations.md](docs/limitations.md).
 
 Saavedra Rojas M, Serrano E, Rodríguez-González A, Tejera-Nevado P.
 *Gene Fusion Detection in RNA-seq Data Using Graph Attention Networks.*
+
+To cite the software itself, use the Zenodo archive: version 1.0.0 is
+[10.5281/zenodo.23016798](https://doi.org/10.5281/zenodo.23016798), and
+[10.5281/zenodo.23016797](https://doi.org/10.5281/zenodo.23016797) always
+resolves to the latest version.
 
 Machine-readable metadata is in [CITATION.cff](CITATION.cff).
 
